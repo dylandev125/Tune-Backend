@@ -4,6 +4,7 @@ const contractABI = require("../abi/ERC721.json");
 
 const mint = (async (req, res) => {
     const { address } = req.body;
+    console.log(address);
 
     const provider = new ethers.getDefaultProvider(process.env.RPC_URL);
     const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
