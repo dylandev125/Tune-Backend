@@ -23,6 +23,6 @@ if (process.env.NODE_ENV == 'production') {
 // }
 
 // v1 api routes
-app.use("/", routes);
+app.use("/api", routes);
 
 module.exports = app;
