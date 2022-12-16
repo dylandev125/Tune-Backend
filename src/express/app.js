@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // enable cors
 if (process.env.NODE_ENV == 'production') {
-  app.use(cors({ origin: "https://asdf.com/" }));
+  app.use(cors({ origin: "https://yellowsun-nft.com/" }));
 } else {
   app.use(cors({ origin: "*" }));
 }
