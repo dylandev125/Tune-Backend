@@ -6,6 +6,6 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 const app = require("./src/express/app");
 let server;
 
-server = app.listen(process.env.PORT, "0.0.0.0", () => {
-  console.log(`Listening to port ${process.env.PORT}`);
+server = app.listen(`${process.env.PORT ? process.env.PORT : 5000 }`, "0.0.0.0", () => {
+  console.log(`Listening to port ${process.env.PORT ? process.env.PORT : 5000 }`);
 });

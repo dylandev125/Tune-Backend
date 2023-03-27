@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const mintRoute = require("./mint");
+const demoRoute = require("./demo");
 
 const defaultRoutes = [
     {
-      path: "/mint",
-      route: mintRoute,
+      path: "/",
+      route: demoRoute,
     },
 ];
 

@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const routes = require("../routes");
+const mongoose = require("mongoose");
+const config = require("../config/config")
+const bodyParser = require("body-parser")
 
 const app = express();
 
@@ -11,18 +14,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // enable cors
-if (process.env.NODE_ENV == 'production') {
-  app.use(cors({ origin: "https://yellowsun-nft.com/" }));
-} else {
-  app.use(cors({ origin: "*" }));
-}
+app.use(cors({ origin: "*" }));
+app.use(bodyParser.json());
 
-// // limit repeated failed requests to auth endpoints
-// if (config.env === "production") {
-//   app.use("/v1/auth", authLimiter);
-// }
+mongoose
+  .connect(config.MONGODB_URL)
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch((err) => {
+    console.log(err);
+    console.error("Error connecting to mongo", err.reason);
+  });
 
 // v1 api routes
-app.use("/api", routes);
+app.use("/demo", routes);
 
 module.exports = app;
